@@ -87,7 +87,7 @@ recognition.onresult = function (event) {
    // Asetetaan tunnistettu teksti aktiiviseen kenttään
    if (inputs[currentTab]) {
       // Vaihdetaan sanat "piste", "pilkku", "kysymysmerkki", "huutomerkki" sanat oikeihin merkkeihin
-      inputs[currentTab].value = final_transcript.split(' ').join(" ").replace(/\s?piste\b/gi, '.').replace(/\s?pilkku\b/gi, ',').replace(/\s?huutomerkki\b/gi, '!').replace(/\s?kysymysmerkki\b/gi, '?');
+      inputs[currentTab].value = final_transcript.split(' ').join(" ").replace(/\s?piste\b/gi, '.').replace(/\s?pilkku\b/gi, ',').replace(/\s?huutomerkki\b/gi, '!').replace(/\s?kysymysmerkki\b/gi, '?').replace(/\s?ät\b/gi, '@').replace(/\s?miukku maukku\b/gi, '@').replace(/\s?at\b/gi, '@');;
       recognition.stop();
    }
 };
