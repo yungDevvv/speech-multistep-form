@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <title>Document</title>
+</head>
+<style>
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+   }
+
+   html,
+   body {
+      height: 100%;
+      margin: 0;
+      font-size: 16px;
+   }
+
+   input,
+   textarea {
+      padding: 10px 20px;
+      font-size: 18px;
+   }
+
+   h1 {
+      font-size: 30px;
+   }
+
+   .container-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+   }
+
+   .flex-between {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   #msf {
+      width: 500px;
+   }
+
+   #msf .input-container {
+      position: relative;
+   }
+
+   #msf svg {
+      display: inline-block;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+   }
+
+   #msf svg.speechActive {
+      color: red !important;
+   }
+
+   #msf .form-tab {
+      display: none;
+   }
+
+   #msf label {
+      font-size: 20px;
+   }
+
+   #msf input,
+   textarea {
+      width: 100%;
+      padding: 10px 20px;
+      font-size: 18px;
+   }
+
+   #msf input.speechActive,
+   textarea.speechActive {
+      border-color: red;
+   }
+
+
+   /* Mark input boxes that gets an error on validation: */
+   input.invalid {
+      background-color: #ffdddd;
+   }
+
+   /* Hide all steps by default: */
+   .tab {
+      display: none;
+   }
+</style>
+
+<body>
+   <div class="container-center">
+      <form id="msf">
+         <div class="flex-between" style="margin-bottom: 40px;">
+            <h1>Puheentunnistuksen lomake</h1>
+            <h1 id="stepIndicator">1 / 7</h1>
+         </div>
+         <div class="form-group form-tab">
+            <label for="firstName">Etunimi: </label>
+            <div class="input-container">
+               <input name="firstName" type="text" class="form-control" id="firstName">
+               <svg id="speechIcon" data-index="1" xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                  fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
+                  <path
+                     d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25 25 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009l.496.008a64 64 0 0 1 1.51.048m1.39 1.081q.428.032.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a66 66 0 0 1 1.692.064q.491.026.966.06" />
+               </svg>
+            </div>
+         </div>
+         <div class="form-group form-tab">
+            <label for="lastName">Sukunimi: </label>
+            <div class="input-container">
+               <input name="lastName" type="text" class="form-control" id="lastName">
+               <svg id="speechIcon" data-index="2" xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                  fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
+                  <path
+                     d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25 25 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009l.496.008a64 64 0 0 1 1.51.048m1.39 1.081q.428.032.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a66 66 0 0 1 1.692.064q.491.026.966.06" />
+               </svg>
+            </div>
+         </div>
+         <div class="form-group form-tab">
+            <label for="role">Titteli: </label>
+            <div class="input-container">
+               <input name="role" type="text" class="form-control" id="role">
+               <svg id="speechIcon" data-index="3" xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                  fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
+                  <path
+                     d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25 25 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009l.496.008a64 64 0 0 1 1.51.048m1.39 1.081q.428.032.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a66 66 0 0 1 1.692.064q.491.026.966.06" />
+               </svg>
+            </div>
+         </div>
+         <div class="form-group form-tab">
+            <label for="company">Yritys: </label>
+            <div class="input-container">
+               <input name="company" type="text" class="form-control" id="company">
+               <svg id="speechIcon" data-index="4" xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                  fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
+                  <path
+                     d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25 25 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009l.496.008a64 64 0 0 1 1.51.048m1.39 1.081q.428.032.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a66 66 0 0 1 1.692.064q.491.026.966.06" />
+               </svg>
+            </div>
+         </div>
+         <div class="form-group form-tab">
+            <label for="phone">Puhelinnumero: </label>
+            <div class="input-container">
+               <input name="phone" type="tel" class="form-control" id="phone">
+               <svg id="speechIcon" data-index="5" xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                  fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
+                  <path
+                     d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25 25 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009l.496.008a64 64 0 0 1 1.51.048m1.39 1.081q.428.032.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a66 66 0 0 1 1.692.064q.491.026.966.06" />
+               </svg>
+            </div>
+         </div>
+         <div class="form-group form-tab">
+            <label for="email">Sähköposti: </label>
+            <div class="input-container">
+               <input type="email" class="form-control" id="email">
+               <svg id="speechIcon" data-index="6" xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                  fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
+                  <path
+                     d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25 25 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009l.496.008a64 64 0 0 1 1.51.048m1.39 1.081q.428.032.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a66 66 0 0 1 1.692.064q.491.026.966.06" />
+               </svg>
+            </div>
+         </div>
+         <div class="form-group form-tab">
+            <label for="message">Viesti: </label>
+            <div class="input-container">
+               <textarea type="text" class="form-control" id="message"></textarea>
+               <svg id="speechIcon" data-index="7" xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                  fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
+                  <path
+                     d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25 25 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009l.496.008a64 64 0 0 1 1.51.048m1.39 1.081q.428.032.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a66 66 0 0 1 1.692.064q.491.026.966.06" />
+               </svg>
+            </div>
+         </div>
+         <div style="float: right;">
+            <button class="btn btn-primary" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button class="btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+         </div>
+      </form>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+   <script>
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+   </script>
+   <script src="app.js"></script>
+</body>
+
+</html>
